@@ -76,9 +76,9 @@ void Scene::paintGL()
 
 void Scene::initShaders()
 {
-    if (!sp.addShaderFromSourceFile(QOpenGLShader::Vertex, ":/vshader.vsh"))
+    if (!sp.addShaderFromSourceFile(QOpenGLShader::Vertex, ":/shaders/vshader.vsh"))
         qDebug() << "VShader err";
-    if (!sp.addShaderFromSourceFile(QOpenGLShader::Fragment, ":/fshader.fsh"))
+    if (!sp.addShaderFromSourceFile(QOpenGLShader::Fragment, ":/shaders/fshader.fsh"))
         qDebug() << "FShader err";
     if (!sp.link())
         qDebug() << "Link err";
@@ -140,7 +140,7 @@ void Scene::initCube(float width)
     indexBuffer.allocate(indexes.constData(), indexes.size() * sizeof(GLuint));
     indexBuffer.release();
 
-    texture = new QOpenGLTexture(QImage(":textures/tex.jpg").mirrored());
+    texture = new QOpenGLTexture(QImage(":/textures/tex.jpg").mirrored());
 
     texture->setMinificationFilter(QOpenGLTexture::Nearest);
     texture->setMagnificationFilter(QOpenGLTexture::Linear);

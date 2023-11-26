@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>textures/cube.jpg</file>
+        <file>textures/tex.jpg</file>
+        <file>shaders/fshader.fsh</file>
+        <file>shaders/vshader.vsh</file>
+    </qresource>
+</RCC>

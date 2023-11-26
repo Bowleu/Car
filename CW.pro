@@ -37,5 +37,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES +=
 
 RESOURCES += \
-    shaders.qrc \
-    textures.qrc
+    resources/manager.qrc
