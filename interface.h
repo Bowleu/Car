@@ -2,6 +2,7 @@
 #define INTERFACE_H
 
 #include <QMainWindow>
+#include <QTimer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Interface; }
@@ -17,5 +18,9 @@ public:
 
 private:
     Ui::Interface *ui;
+    QTimer *timer;
+
+private slots:
+    void updateGL();
 };
 #endif // INTERFACE_H
