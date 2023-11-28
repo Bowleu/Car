@@ -18,11 +18,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 LIBS += -lopengl32
 
 SOURCES += \
+    camera.cpp \
     main.cpp \
     interface.cpp \
     scene.cpp
 
 HEADERS += \
+    camera.h \
     interface.h \
     scene.h
 

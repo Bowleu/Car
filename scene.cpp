@@ -1,4 +1,5 @@
 #include "scene.h"
+#include <QtMath>
 
 Scene::Scene()
 {
@@ -24,33 +25,28 @@ void Scene::initializeGL() {
     glEnable(GL_TEXTURE_2D);
 
     initShaders();
-
     initCube(1.0f);
 }
 
 void Scene::resizeGL(int w, int h)
 {
     float aspect = (float) w / h;
-
-    projectionMatrix.setToIdentity();
-    projectionMatrix.perspective(45, aspect, 0.1f, 20.0f);
+    mainCamera = new Camera(QVector3D(1, 1.25, 3),
+                              QVector3D(0, 0, 0),
+                              0.1f,
+                              20.0f,
+                              45,
+                              aspect);
 }
 
 void Scene::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    QMatrix4x4 modelViewMatrix;
-    modelViewMatrix.setToIdentity();
-    modelViewMatrix.translate(0.0, 0.0, -2.5);
-    modelViewMatrix.rotate(30, 1.0, 0.0, 0.0);
-    modelViewMatrix.rotate(30, 0.0, 1.0, 0.0);
-    modelViewMatrix.rotate(eltimer->elapsed() / 10 % 360, 0.0, 1.0, 0.0);
-
     texture->bind(0);
 
     sp.bind();
-    sp.setUniformValue("qt_ModelViewProjectionMatrix", projectionMatrix * modelViewMatrix);
+
     sp.setUniformValue("qt_Texture0", 0);
 
     arrayBuffer.bind();
@@ -70,6 +66,15 @@ void Scene::paintGL()
     indexBuffer.bind();
 
     int size = indexBuffer.size();
+
+    QMatrix4x4 model;
+    model.setToIdentity();
+    //model.rotate(eltimer->elapsed() / 30 % 360, 0, 1, 0);
+    sp.setUniformValue("qt_ModelMatrix", model);
+
+    mainCamera->setPosition(2.5 * qSin(eltimer->elapsed() / 30 % 360 * 3.14159 / 180), 1.25, 2.5 * qCos(eltimer->elapsed() / 30 % 360 * 3.14159 / 180));
+
+    mainCamera->show(sp);
 
     glDrawElements(GL_TRIANGLES, size, GL_UNSIGNED_INT, 0);
 }

@@ -8,6 +8,8 @@
 #include <QOpenGLShaderProgram>
 #include <QDebug>
 #include <QElapsedTimer>
+#include <QVector3D>
+#include "camera.h"
 
 struct VertexData {
     VertexData() {
@@ -18,6 +20,7 @@ struct VertexData {
     QVector3D position;
     QVector2D coords;
     QVector3D normal;
+
 };
 
 class Scene : public QOpenGLWidget
@@ -28,6 +31,7 @@ public:
     Scene(QWidget *parent);
     ~Scene();
 protected:
+
     void initializeGL();
     void resizeGL(int w, int h);
     void paintGL();
@@ -36,7 +40,8 @@ protected:
 
     void initCube(float width);
 private:
-    QMatrix4x4 projectionMatrix;
+    Camera *mainCamera;
+    QMatrix4x4 MVP;
     QOpenGLShaderProgram sp;
     QOpenGLTexture *texture;
     QOpenGLBuffer arrayBuffer;
