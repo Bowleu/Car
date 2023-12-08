@@ -1,14 +1,22 @@
-attribute highp vec4 qt_Vertex;
-attribute highp vec4 qt_MultiTexCoord0;
-uniform highp mat4 qt_ProjectionMatrix;
-uniform highp mat4 qt_ViewMatrix;
-uniform highp mat4 qt_ModelMatrix;
-varying highp vec4 qt_TexCoord0;
-varying highp mat4 qt_ModelViewProjectionMatrix;
+attribute highp vec4 aPosition;
+attribute highp vec2 aTexCoord;
+attribute highp vec3 aNormal;
+
+uniform highp mat4 uProjectionMatrix;
+uniform highp mat4 uViewMatrix;
+uniform highp mat4 uModelMatrix;
+
+varying highp vec2 vTexCoord;
+varying highp vec3 vPosition;
+varying highp vec3 vNormal;
 
 void main(void)
 {
-    qt_ModelViewProjectionMatrix = qt_ProjectionMatrix * qt_ViewMatrix * qt_ModelMatrix;
-    gl_Position = qt_ModelViewProjectionMatrix * qt_Vertex;
-    qt_TexCoord0 = qt_MultiTexCoord0;
+    mat4 mvMatrix = uViewMatrix * uModelMatrix;
+
+    gl_Position = vec4(uProjectionMatrix * mvMatrix * aPosition);
+
+    vPosition = mvMatrix * aPosition;
+    vNormal = normalize(vec3(mvMatrix * vec4(aNormal, 0.0)));
+    vTexCoord = aTexCoord;
 }

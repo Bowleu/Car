@@ -21,12 +21,17 @@ SOURCES += \
     camera.cpp \
     main.cpp \
     interface.cpp \
-    scene.cpp
+    object3d.cpp \
+    scene.cpp \
+    simpleObject3d.cpp
 
 HEADERS += \
     camera.h \
     interface.h \
-    scene.h
+    object3d.h \
+    scene.h \
+    simpleObject3d.h \
+    vertexdata.h
 
 FORMS += \
     interface.ui

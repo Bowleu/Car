@@ -9,19 +9,12 @@
 #include <QDebug>
 #include <QElapsedTimer>
 #include <QVector3D>
+#include <QFile>
+#include <QOpenGLContext>
 #include "camera.h"
-
-struct VertexData {
-    VertexData() {
-    }
-    VertexData(QVector3D p, QVector2D c, QVector3D n) : position(p), coords(c), normal(n)
-    {
-    }
-    QVector3D position;
-    QVector2D coords;
-    QVector3D normal;
-
-};
+#include "vertexdata.h"
+#include "object3d.h"
+#include "simpleObject3d.h"
 
 class Scene : public QOpenGLWidget
 {
@@ -37,16 +30,14 @@ protected:
     void paintGL();
 
     void initShaders();
-
     void initCube(float width);
 private:
     Camera *mainCamera;
-    QMatrix4x4 MVP;
     QOpenGLShaderProgram sp;
-    QOpenGLTexture *texture;
-    QOpenGLBuffer arrayBuffer;
-    QOpenGLBuffer indexBuffer;
     QElapsedTimer *eltimer;
+    QVector <Object3D *> objects;
+    SimpleObject3D *cube;
+
 };
 
 #endif // SCENE_H

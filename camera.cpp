@@ -84,6 +84,6 @@ void Camera::setViewOn(float horAngle, float vertAngle)
 
 void Camera::show(QOpenGLShaderProgram &sp)
 {
-    sp.setUniformValue("qt_ProjectionMatrix", projection);
-    sp.setUniformValue("qt_ViewMatrix", view);
+    sp.setUniformValue("uProjectionMatrix", projection);
+    sp.setUniformValue("uViewMatrix", view);
 }
