@@ -12,10 +12,11 @@ class SimpleObject3D
 {
     QOpenGLBuffer vertexBuffer;
     QOpenGLBuffer indexBuffer;
-    QMatrix4x4 modelMatrix;
+
     QOpenGLTexture *texture;
     QVector3D center;
 public:
+    QMatrix4x4 modelMatrix; //private
     SimpleObject3D();
     ~SimpleObject3D();
     SimpleObject3D(const QVector<VertexData> &vertData, const QVector<GLuint> &indexes, const QImage &textureImage);

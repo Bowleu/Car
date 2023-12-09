@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>531</height>
+    <width>900</width>
+    <height>400</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>900</width>
+    <height>400</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>900</width>
+    <height>400</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Interface</string>
@@ -17,8 +29,8 @@
    <widget class="Scene" name="mainScene">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>20</y>
+      <x>0</x>
+      <y>0</y>
       <width>900</width>
       <height>400</height>
      </rect>
@@ -27,20 +39,44 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>440</y>
-      <width>160</width>
-      <height>60</height>
+      <x>300</x>
+      <y>300</y>
+      <width>301</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Segoe UI Variable Display Light</family>
-      <pointsize>20</pointsize>
+      <family>Consolas</family>
+      <pointsize>-1</pointsize>
+      <weight>99</weight>
+      <bold>true</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+  text-align: center;
+  border-top: 3px solid #ffd801;
+  border-bottom: 3px solid #ffd801;
+  color: #ffd801;
+  font-family: Consolas ,monospace;
+  font-size: 36px;
+  line-height: 1.5rem;
+  padding: 15px;
+  position: relative;
+  font-weight: 800;
+  background: #666666;
+ color: #ffd801;
+}
+
+QPushButton:hover {
+  color: #fcdd2d;
+  background: #777777;
+}
+</string>
+    </property>
     <property name="text">
-     <string>Старт</string>
+     <string>- - START - -</string>
     </property>
    </widget>
   </widget>
@@ -49,12 +85,11 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1000</width>
-     <height>21</height>
+     <width>900</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <customwidgets>
   <customwidget>

@@ -19,7 +19,7 @@ Scene::~Scene()
 }
 
 void Scene::initializeGL() {
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
     glViewport(0,0,500,500);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
@@ -47,17 +47,25 @@ void Scene::paintGL()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     sp.bind();
 
-    //mainCamera->setPosition(-155 + 700 * qSin(eltimer->elapsed() / 30 % 360 * 3.14159 / 180), 200, -55 + 700 * qCos(eltimer->elapsed() / 30 % 360 * 3.14159 / 180));
+
+    if(!idle_state){
+        //mainCamera->setPosition(50,500,0); тут машина растягивается
+        mainCamera->setPosition(600,400,400);
+    } else{
+        mainCamera->setPosition(-155 + 700 * qSin(eltimer->elapsed() / 30 % 360 * 3.14159 / 180), 200, -55 + 700 * qCos(eltimer->elapsed() / 30 % 360 * 3.14159 / 180));
+    }
     mainCamera->show(sp);
 
     cube->draw(sp, context()->functions());
     int temp = 0;
     temp++;
     for (int i = 0; i < objects.size(); i++) {
-        objects[i]->rotate(1);
-        objects[i]->moveAt(QVector3D(0, 0, 10.5));
+        objects[i]->rotate(0);
+        objects[i]->moveAt(QVector3D(0, 0, 00));
         objects[i]->draw(sp, context()->functions());
     }
+    //initCube(300);
+    //qDebug() << cube->modelMatrix;
 }
 
 void Scene::initShaders()

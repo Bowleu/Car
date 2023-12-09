@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QTimer>
+#include <QPushButton>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Interface; }
@@ -22,5 +23,6 @@ private:
 
 private slots:
     void updateGL();
+    void on_pushButton_clicked();
 };
 #endif // INTERFACE_H

@@ -1,5 +1,6 @@
 #include "interface.h"
 #include "ui_interface.h"
+#include "camera.h"
 
 Interface::Interface(QWidget *parent)
     : QMainWindow(parent)
@@ -24,3 +25,8 @@ void Interface::updateGL()
     timer->start(10);
 }
 
+
+void Interface::on_pushButton_clicked()
+{
+    ui->mainScene->idle_state = 0;
+}

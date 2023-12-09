@@ -20,6 +20,7 @@ class Scene : public QOpenGLWidget
 {
     Q_OBJECT
 public:
+    bool idle_state = 1;
     Scene();
     Scene(QWidget *parent);
     ~Scene();
