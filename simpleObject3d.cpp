@@ -90,27 +90,27 @@ void SimpleObject3D::init(const QVector<VertexData> &vertData, const QVector<GLu
 void SimpleObject3D::moveTo(QVector3D position)
 {
     modelMatrix.translate(position - center);
-    center = position;
+    center = QVector3D(modelMatrix.column(3).x(), modelMatrix.column(3).y(), modelMatrix.column(3).z());
 }
 
 void SimpleObject3D::moveTo(qreal x, qreal y, qreal z)
 {
     QVector3D position(x, y, z);
     modelMatrix.translate(position - center);
-    center = position;
+    center = QVector3D(modelMatrix.column(3).x(), modelMatrix.column(3).y(), modelMatrix.column(3).z());
 }
 
 void SimpleObject3D::moveAt(QVector3D position)
 {
     modelMatrix.translate(position);
-    center = center + position;
+    center = QVector3D(modelMatrix.column(3).x(), modelMatrix.column(3).y(), modelMatrix.column(3).z());
 }
 
 void SimpleObject3D::moveAt(qreal x, qreal y, qreal z)
 {
     QVector3D position(x, y, z);
     modelMatrix.translate(position);
-    center = center + position;
+    center = QVector3D(modelMatrix.column(3).x(), modelMatrix.column(3).y(), modelMatrix.column(3).z());
 }
 
 void SimpleObject3D::rotate(float deg)

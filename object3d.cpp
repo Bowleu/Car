@@ -11,6 +11,7 @@ Object3D::Object3D(QString pathToFile) {
 }
 
 void Object3D::loadObjectFromFile(QString pathToFile) {
+    rotation = 0;
     QFile objFile(pathToFile);
     if (!objFile.exists()) {
         qDebug() << ".obj file not found.";
@@ -81,6 +82,7 @@ SimpleObject3D *Object3D::getObject(QString name)
 
 void Object3D::rotate(qreal degrees)
 {
+    rotation += degrees;
     for (auto pair : objects.toStdMap()) {
         pair.second->rotate(degrees);
     }
@@ -115,7 +117,10 @@ void Object3D::moveAt(QVector3D position)
     for (auto pair : objects.toStdMap()) {
         pair.second->moveAt(position);
     }
-    center += position;
+    QMatrix4x4 rotate;
+    rotate.setToIdentity();
+    rotate.rotate(rotation, 0, 1, 0);
+    center += position * rotate;
 }
 
 void Object3D::moveAt(qreal x, qreal y, qreal z)
@@ -124,7 +129,10 @@ void Object3D::moveAt(qreal x, qreal y, qreal z)
     for (auto pair : objects.toStdMap()) {
         pair.second->moveAt(position);
     }
-    center += position;
+    QMatrix4x4 rotate;
+    rotate.setToIdentity();
+    rotate.rotate(rotation, 0, 1, 0);
+    center += position * rotate;
 }
 
 void Object3D::draw(QOpenGLShaderProgram &sp, QOpenGLFunctions *functions)
@@ -132,6 +140,11 @@ void Object3D::draw(QOpenGLShaderProgram &sp, QOpenGLFunctions *functions)
     for (auto pair : objects.toStdMap()) {
         pair.second->draw(sp, functions);
     }
+}
+
+QVector3D Object3D::position()
+{
+    return center;
 }
 
 Object3D::~Object3D()

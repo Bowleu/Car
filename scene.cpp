@@ -37,7 +37,7 @@ void Scene::resizeGL(int w, int h)
     mainCamera = new Camera(QVector3D(-400, 300.25, 300),
                               QVector3D(0, 0, 0),
                               0.1f,
-                              2000.0f,
+                              2500.0f,
                               45,
                               aspect);
 }
@@ -50,7 +50,7 @@ void Scene::paintGL()
 
     if(!idle_state){
         //mainCamera->setPosition(50,500,0); тут машина растягивается
-        mainCamera->setPosition(600,400,400);
+        mainCamera->setPosition(-800,400,-800);
     } else{
         mainCamera->setPosition(-155 + 700 * qSin(eltimer->elapsed() / 30 % 360 * 3.14159 / 180), 200, -55 + 700 * qCos(eltimer->elapsed() / 30 % 360 * 3.14159 / 180));
     }
@@ -60,8 +60,9 @@ void Scene::paintGL()
     int temp = 0;
     temp++;
     for (int i = 0; i < objects.size(); i++) {
-        objects[i]->rotate(0);
-        objects[i]->moveAt(QVector3D(0, 0, 00));
+        objects[i]->rotate(1);
+        objects[i]->moveAt(QVector3D(0, 0, 10));
+        qDebug() << objects[0]->position();
         objects[i]->draw(sp, context()->functions());
     }
     //initCube(300);
