@@ -15,11 +15,13 @@
 #include "vertexdata.h"
 #include "object3d.h"
 #include "simpleObject3d.h"
+#include "car.h"
 
 class Scene : public QOpenGLWidget
 {
     Q_OBJECT
 public:
+    bool cam_idle_state = 1;
     bool idle_state = 1;
     Scene();
     Scene(QWidget *parent);
@@ -32,13 +34,14 @@ protected:
 
     void initShaders();
     void initCube(float width);
+    void initWall(float width);
 private:
     Camera *mainCamera;
     QOpenGLShaderProgram sp;
     QElapsedTimer *eltimer;
     QVector <Object3D *> objects;
     SimpleObject3D *cube;
-
+    Car car;
 };
 
 #endif // SCENE_H

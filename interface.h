@@ -20,6 +20,7 @@ public:
 private:
     Ui::Interface *ui;
     QTimer *timer;
+    //QPushButton *pushButton;
 
 private slots:
     void updateGL();

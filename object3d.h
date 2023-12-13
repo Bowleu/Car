@@ -8,8 +8,8 @@
 class Object3D
 {
     QMap<QString, SimpleObject3D*> objects;
-    QVector3D center;
     qreal rotation;
+    QVector3D center;
 public:
     Object3D();
     Object3D(QString pathToFile);
@@ -22,7 +22,7 @@ public:
     void moveAt(QVector3D position);
     void moveAt(qreal x, qreal y, qreal z);
     void draw(QOpenGLShaderProgram &sp, QOpenGLFunctions *functions);
-    QVector3D position();
+    QVector3D getPosition();
     ~Object3D();
 };
 

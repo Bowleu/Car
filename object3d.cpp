@@ -142,7 +142,7 @@ void Object3D::draw(QOpenGLShaderProgram &sp, QOpenGLFunctions *functions)
     }
 }
 
-QVector3D Object3D::position()
+QVector3D Object3D::getPosition()
 {
     return center;
 }

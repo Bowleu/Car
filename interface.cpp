@@ -22,11 +22,18 @@ Interface::~Interface()
 void Interface::updateGL()
 {
     ui->mainScene->update();
-    timer->start(10);
 }
 
 
 void Interface::on_pushButton_clicked()
 {
-    ui->mainScene->idle_state = 0;
+    ui->mainScene->cam_idle_state = 0;
+    if(ui->mainScene->idle_state){
+        ui->mainScene->idle_state = 0;
+        ui->pushButton->setText("- - BREAK - -");
+    }
+    else{
+        ui->mainScene->idle_state = 1;
+        ui->pushButton->setText("- - START - -");
+    }
 }
