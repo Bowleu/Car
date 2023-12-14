@@ -146,7 +146,10 @@ QVector3D Object3D::getPosition()
 {
     return center;
 }
-
+qreal Object3D::getRotation()
+{
+    return rotation;
+}
 Object3D::~Object3D()
 {
     for (auto pair : objects.toStdMap()) {

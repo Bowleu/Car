@@ -53,14 +53,22 @@ void Scene::paintGL()
     }
     if(!idle_state){
         //mainCamera->setPosition(50,500,0); тут машина растягивается
-        mainCamera->setPosition(-800,400,-800);
-        car.moveForward(10);
-        car.rotate(1);
+        mainCamera->setPosition(-700,300,500);
+        int distanceToWall = car.rayTriangleIntersect(QVector3D(500, 1000, 600),QVector3D(500, -50, 600),QVector3D(-500, -50, 600));
+        if(distanceToWall < 400 && distanceToWall !=0){
+            car.rotate(2);
+        } else{
+
+        }
+        car.setSpeed(5);
 
     }
+
     mainCamera->show(sp);
+    Terrain terrain;
+    qDebug() << car.rayTriangleIntersect(QVector3D(500, 1000, 600),QVector3D(500, -50, 600),QVector3D(-500, -50, 600));
+    qDebug() << car.checkRayIntersection()
     qDebug() << car.getPosition();
-    qDebug() << car.rayTriangleIntersect(car.getPosition(),QVector3D(0,0,1),QVector3D(-1500, 250, 150*3),QVector3D(-1500, -50, 150*3),QVector3D(150, -50, 150*3));
     cube->draw(sp, context()->functions());
     /*for (int i = 0; i < objects.size(); i++) {
         objects[i]->rotate(1);
@@ -72,7 +80,7 @@ void Scene::paintGL()
     car.draw(sp, context()->functions());
     initCube(300);
     //qDebug() << cube->modelMatrix;
-
+    //qDebug() << qCos(1) << cos(1*3.14159/180);
 }
 
 void Scene::initShaders()
@@ -119,9 +127,10 @@ void Scene::initCube(float width)
     vertexes.append(VertexData(QVector3D(halfWidth, -halfWidth+100, halfWidth*3), QVector2D(0.0, 0.0), QVector3D(0.0, 0.0, -1.0)));
     vertexes.append(VertexData(QVector3D(-halfWidth, halfWidth+100, halfWidth*3), QVector2D(1.0, 1.0), QVector3D(0.0, 0.0, -1.0)));
     vertexes.append(VertexData(QVector3D(-halfWidth, -halfWidth+100, halfWidth*3), QVector2D(1.0, 0.0), QVector3D(0.0, 0.0, -1.0)));*/
-    vertexes.append(VertexData(QVector3D(1500, 250, 150*3), QVector2D(0.0, 1.0), QVector3D(0.0, 0.0, -1.0)));
-    vertexes.append(VertexData(QVector3D(1500, -50, 150*3), QVector2D(0.0, 0.0), QVector3D(0.0, 0.0, -1.0)));
-    vertexes.append(VertexData(QVector3D(-150, -50, 150*3), QVector2D(1.0, 0.0), QVector3D(0.0, 0.0, -1.0)));
+    vertexes.append(VertexData(QVector3D(500, 1000, 600), QVector2D(0.0, 1.0), QVector3D(0.0, 0.0, -1.0)));
+    vertexes.append(VertexData(QVector3D(500, -50, 600), QVector2D(0.0, 0.0), QVector3D(0.0, 0.0, -1.0)));
+    vertexes.append(VertexData(QVector3D(-500, -50, 600), QVector2D(1.0, 0.0), QVector3D(0.0, 0.0, -1.0)));
+    vertexes.append(VertexData(QVector3D(-500, 1000, 600), QVector2D(1.0, 1.0), QVector3D(0.0, 0.0, -1.0)));
 
     QVector <GLuint> indexes;
     for (int i = 0; i < 3; i += 3) {

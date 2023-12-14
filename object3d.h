@@ -23,6 +23,7 @@ public:
     void moveAt(qreal x, qreal y, qreal z);
     void draw(QOpenGLShaderProgram &sp, QOpenGLFunctions *functions);
     QVector3D getPosition();
+    qreal getRotation();
     ~Object3D();
 };
 

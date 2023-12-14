@@ -3,73 +3,49 @@ Car::Car()
 {
 
 }
-void Car::moveForward(float speed)
+void Car::setSpeed(float speed)
 {
     Object3D::moveAt(QVector3D(0, 0, speed));
 }
-bool Car::rayTriangleIntersect(
-    QVector3D orig, const QVector3D dir,
-    QVector3D v0, QVector3D v1, QVector3D v2)
+float Car::rayTriangleIntersect(QVector3D v0, QVector3D v1, QVector3D v2)
 {
-    // compute the plane's normal
-    QVector3D v0v1 = v1 - v0;
-    QVector3D v0v2 = v2 - v0;
-    // no need to normalize
-    QVector3D N = v0v1.crossProduct(v0v1, v0v2); // N
-    //float area2 = N.length();
 
-    // Step 1: finding P
+    // orig и dir задают начало и направление луча. v0, v1, v2 - вершины треугольника.
+    // Функция возвращает расстояние от начала луча до точки пересечения или 0.
+    QVector3D orig = QVector3D(Object3D::getPosition().x()+cos(Object3D::getRotation()*3.14159/180)*200,0,Object3D::getPosition().z()+sin(Object3D::getRotation()*3.14159/180)*200);
+    QVector3D dir = QVector3D(sin(Object3D::getRotation()*3.14159/180),0,cos(Object3D::getRotation()*3.14159/180));
+    QVector3D e1 = v1 - v0;
+    QVector3D e2 = v2 - v0;
+    // Вычисление вектора нормали к плоскости
+    QVector3D pvec = QVector3D::crossProduct(dir, e2);
+    float det = QVector3D::dotProduct(e1, pvec);
 
-    // check if the ray and plane are parallel.
-    float NdotRayDirection = QVector3D::dotProduct(N, dir);
-    if (fabs(NdotRayDirection) < std::numeric_limits<double>::epsilon()) // almost 0
-        return false; // they are parallel, so they don't intersect!
+    // Луч параллелен плоскости
+    if (det < 1e-8 && det > -1e-8) return false;
 
-    // compute d parameter using equation 2
-    float d = -QVector3D::dotProduct(N,v0);
+    float inv_det = 1 / det;
+    QVector3D tvec = orig - v0;
+    float u = QVector3D::dotProduct(tvec, pvec) * inv_det;
+    if (u < 0 || u > 1) return false;
 
-    // compute t (equation 3)
-    float t;
-    t = -(QVector3D::dotProduct(orig, N) + d) / NdotRayDirection;
-    // check if the triangle is behind the ray
-    if (t < 0)
-        return false; // the triangle is behind
+    QVector3D qvec = QVector3D::crossProduct(tvec, e1);
+    float v = QVector3D::dotProduct(dir, qvec) * inv_det;
+    if (v < 0 || u + v > 1) return false;
 
-    // compute the intersection point using equation 1
-    QVector3D P = orig + t * dir;
-    qDebug() << "Intersection: " << P;
-    // Step 2: inside-outside test
-    QVector3D C; // vector perpendicular to triangle's plane
+    // Треугольник за в протитвоположной стороне от направления луча
+    if(QVector3D::dotProduct(e2, qvec) * inv_det < 0) return false;
 
-    // edge 0
-    QVector3D edge0 = v1 - v0;
-    QVector3D vp0 = P - v0;
-    C = QVector3D::crossProduct(vp0,edge0);
-    if (QVector3D::dotProduct(C,N) < 0){
-        //qDebug() << "edge0";
-        return false; // P is on the right side
-
+    return  QVector3D::dotProduct(e2, qvec) * inv_det;
+}
+float Car::checkRayIntersection(Terrain terrain){
+    int size = terrain.getSize();
+    float distance;
+    QVector<VertexData *> vertData = terrain.getVertData();
+    for(int i = 0; i<size; i+=3){
+        distance = rayTriangleIntersect(vertData[i]->position,vertData[i+1]->position,vertData[i+2]->position);
+        if (distance != 0) return distance;
     }
-    // edge 1
-    QVector3D edge1 = v2 - v1;
-    QVector3D vp1 = P - v1;
-    C = QVector3D::crossProduct(vp1,edge1);
-    if (QVector3D::dotProduct(C,N) < 0){
-        //qDebug() << "edge1";
-        return false; // P is on the right side
-
-    }
-
-    // edge 2
-    QVector3D edge2 = v0 - v2;
-    QVector3D vp2 = P - v2;
-    C = QVector3D::crossProduct(vp2,edge2);
-    if (QVector3D::dotProduct(C,N) < 0){
-        //qDebug() << "edge2";
-        return false; // P is on the right side;
-    }
-
-    return true; // this ray hits the triangle
+    return false;
 }
 Car::~Car(){
     for (auto pair : objects.toStdMap()) {

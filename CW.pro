@@ -24,7 +24,8 @@ SOURCES += \
     interface.cpp \
     object3d.cpp \
     scene.cpp \
-    simpleObject3d.cpp
+    simpleObject3d.cpp \
+    terrain.cpp
 
 HEADERS += \
     camera.h \
@@ -33,6 +34,7 @@ HEADERS += \
     object3d.h \
     scene.h \
     simpleObject3d.h \
+    terrain.h \
     vertexdata.h
 
 FORMS += \
