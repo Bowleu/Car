@@ -51,14 +51,14 @@ void Scene::paintGL()
     sp.bind();
     cube->draw(sp, context()->functions());
     car.draw(sp, context()->functions());
-    terrain.draw(sp, context()->functions());
+    terrain.SimpleObject3D::draw(sp, context()->functions());
 
     if(cam_idle_state){
         mainCamera->setPosition(-155 + 700 * qSin(eltimer->elapsed() / 30 % 360 * 3.14159 / 180), 200, -55 + 700 * qCos(eltimer->elapsed() / 30 % 360 * 3.14159 / 180));
     }
     if(!idle_state){
         mainCamera->setPosition(-700,300,500);
-        int distanceToWall = car.rayTriangleIntersect(QVector3D(500, 1000, 600),QVector3D(500, -50, 600),QVector3D(-500, -50, 600));
+        float distanceToWall = car.checkRayIntersection(terrain);
         if(distanceToWall < 400 && distanceToWall !=0){
             car.rotate(2);
 
@@ -70,22 +70,6 @@ void Scene::paintGL()
     }
 
     mainCamera->show(sp);
-
-    /* ====================
-
-    qDebug() << car.checkRayIntersection(terrain);
-
-    когда в эту функцию передается террейн, то прога крашится
-
-    крашится, даже если передавать в пустую функцию(!) (без инструкций внутри)
-
-    значит, наверное, проблема где-то на terrain.draw(...)
-
-    сейчас draw наследуется от object3d
-
-    пробовал повторять функцию от simpleobject3d, но у меня не получалось чтобы это заработало
-
-    ====================== */
 
 
     qDebug() << car.getPosition();

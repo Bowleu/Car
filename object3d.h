@@ -5,7 +5,7 @@
 #include <QMap>
 #include "simpleObject3d.h"
 
-class Object3D
+class Object3D : public SimpleObject3D
 {
     QMap<QString, SimpleObject3D*> objects;
     qreal rotation;
@@ -13,7 +13,7 @@ class Object3D
 public:
     Object3D();
     Object3D(QString pathToFile);
-    void loadObjectFromFile(QString pathToFile);
+    virtual void loadObjectFromFile(QString pathToFile);
     SimpleObject3D* getObject(QString name);
     void rotate(qreal degrees); // Вокруг оси y
     void scale(qreal miltiplicator);

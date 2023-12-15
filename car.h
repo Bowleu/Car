@@ -5,6 +5,7 @@
 #include <cmath>
 #include <QMap>
 #include "object3d.h"
+#include "simpleObject3d.h"
 #include "terrain.h"
 
 class Car : public Object3D
