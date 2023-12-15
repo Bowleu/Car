@@ -42,6 +42,7 @@ private:
     QVector <Object3D *> objects;
     SimpleObject3D *cube;
     Car car;
+    Terrain terrain;
 };
 
 #endif // SCENE_H

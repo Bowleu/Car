@@ -39,10 +39,11 @@ float Car::rayTriangleIntersect(QVector3D v0, QVector3D v1, QVector3D v2)
 }
 float Car::checkRayIntersection(Terrain terrain){
     int size = terrain.getSize();
-    float distance;
-    QVector<VertexData *> vertData = terrain.getVertData();
+    float distance = 0;
+    QVector<VertexData> vertData = terrain.getVertData();
     for(int i = 0; i<size; i+=3){
-        distance = rayTriangleIntersect(vertData[i]->position,vertData[i+1]->position,vertData[i+2]->position);
+        qDebug() << vertData[i].position << vertData[i+1].position<< vertData[i+2].position;
+        distance = rayTriangleIntersect(vertData[i].position,vertData[i+1].position,vertData[i+2].position);
         if (distance != 0) return distance;
     }
     return false;

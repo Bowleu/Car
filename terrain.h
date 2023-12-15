@@ -1,17 +1,23 @@
 #ifndef TERRAIN_H
 #define TERRAIN_H
 #include "vertexdata.h"
+#include "object3d.h"
 #include <QVector>
 
-class Terrain
+class Terrain : public Object3D
 {
-    int size;
-    QVector <VertexData *> vertData;
-
+    int size = 3;
+    QOpenGLBuffer vertexBuffer;
+    QOpenGLBuffer indexBuffer;
+    QOpenGLTexture *texture;
+    QVector <VertexData> vertData;
+    QMatrix4x4 modelMatrix;
 public:
+
     Terrain();
+    //void draw(QOpenGLShaderProgram &sp, QOpenGLFunctions *functions);
     int getSize();
-    QVector<VertexData *>getVertData();
+    QVector<VertexData> getVertData();
     ~Terrain();
 };
 

@@ -15,8 +15,8 @@ class SimpleObject3D
 
     QOpenGLTexture *texture;
     QVector3D center;
+    QMatrix4x4 modelMatrix;
 public:
-    QMatrix4x4 modelMatrix; //private
     SimpleObject3D();
     ~SimpleObject3D();
     SimpleObject3D(const QVector<VertexData> &vertData, const QVector<GLuint> &indexes, const QImage &textureImage);
