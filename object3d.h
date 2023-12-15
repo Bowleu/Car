@@ -13,7 +13,7 @@ class Object3D : public SimpleObject3D
 public:
     Object3D();
     Object3D(QString pathToFile);
-    virtual void loadObjectFromFile(QString pathToFile);
+    void loadObjectFromFile(QString pathToFile);
     SimpleObject3D* getObject(QString name);
     void rotate(qreal degrees); // Вокруг оси y
     void scale(qreal miltiplicator);

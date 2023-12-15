@@ -20,7 +20,7 @@ public:
     SimpleObject3D();
     ~SimpleObject3D();
     SimpleObject3D(const QVector<VertexData> &vertData, const QVector<GLuint> &indexes, const QImage &textureImage);
-    virtual void draw(QOpenGLShaderProgram &sp, QOpenGLFunctions *functions);
+    void draw(QOpenGLShaderProgram &sp, QOpenGLFunctions *functions);
     void scale(qreal multiplicator);
     void init(const QVector<VertexData> &vertData, const QVector<GLuint> &indexes, const QImage &textureImage);
     void moveTo(QVector3D position);
