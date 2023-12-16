@@ -113,7 +113,7 @@ void SimpleObject3D::moveAt(qreal x, qreal y, qreal z)
     center = QVector3D(modelMatrix.column(3).x(), modelMatrix.column(3).y(), modelMatrix.column(3).z());
 }
 
-void SimpleObject3D::rotate(float deg)
+void SimpleObject3D::rotate(qreal deg)
 {
     modelMatrix.rotate(deg, 0, 1, 0);
 }

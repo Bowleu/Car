@@ -10,6 +10,7 @@
 
 class SimpleObject3D
 {
+protected:
     QOpenGLBuffer vertexBuffer;
     QOpenGLBuffer indexBuffer;
 
@@ -20,14 +21,14 @@ public:
     SimpleObject3D();
     ~SimpleObject3D();
     SimpleObject3D(const QVector<VertexData> &vertData, const QVector<GLuint> &indexes, const QImage &textureImage);
-    void draw(QOpenGLShaderProgram &sp, QOpenGLFunctions *functions);
-    void scale(qreal multiplicator);
+    virtual void draw(QOpenGLShaderProgram &sp, QOpenGLFunctions *functions);
+    virtual void scale(qreal multiplicator);
     void init(const QVector<VertexData> &vertData, const QVector<GLuint> &indexes, const QImage &textureImage);
-    void moveTo(QVector3D position);
-    void moveTo(qreal x, qreal y, qreal z);
-    void moveAt(QVector3D position);
-    void moveAt(qreal x, qreal y, qreal z);
-    void rotate(float deg);
+    virtual void moveTo(QVector3D position);
+    virtual void moveTo(qreal x, qreal y, qreal z);
+    virtual void moveAt(QVector3D position);
+    virtual void moveAt(qreal x, qreal y, qreal z);
+    virtual void rotate(qreal deg);
 };
 
 #endif // SimpleObject3D_H

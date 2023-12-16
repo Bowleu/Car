@@ -4,20 +4,17 @@
 #include "object3d.h"
 #include <QVector>
 
-class Terrain : public Object3D
+class Terrain : public SimpleObject3D
 {
     int size = 3;
-    QOpenGLBuffer vertexBuffer;
-    QOpenGLBuffer indexBuffer;
-    QOpenGLTexture *texture;
     QVector <VertexData> vertData;
-    QMatrix4x4 modelMatrix;
 public:
 
     Terrain();
     //void draw(QOpenGLShaderProgram &sp, QOpenGLFunctions *functions);
     int getSize();
     QVector<VertexData> getVertData();
+    void loadObjectFromFile(QString path);
     ~Terrain();
 };
 
