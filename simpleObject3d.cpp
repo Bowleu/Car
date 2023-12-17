@@ -87,6 +87,18 @@ void SimpleObject3D::init(const QVector<VertexData> &vertData, const QVector<GLu
     center = QVector3D(0, 0, 0);
 }
 
+void SimpleObject3D::setTexture(QString path)
+{
+    if (texture != nullptr) {
+        if (texture->isCreated())
+            texture->destroy();
+    }
+    texture = new QOpenGLTexture(QImage(path).mirrored());
+    texture->setMinificationFilter(QOpenGLTexture::Nearest);
+    texture->setMagnificationFilter(QOpenGLTexture::Linear);
+    texture->setWrapMode(QOpenGLTexture::Repeat);
+}
+
 void SimpleObject3D::moveTo(QVector3D position)
 {
     modelMatrix.translate(position - center);

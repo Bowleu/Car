@@ -16,6 +16,7 @@ public:
     QVector<VertexData> getVertData();
     void loadObjectFromFile(QString path);
     ~Terrain();
+    Terrain(QString pathToObj, QString pathToTexture);
 };
 
 #endif // TERRAIN_H

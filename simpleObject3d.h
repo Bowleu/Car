@@ -24,6 +24,7 @@ public:
     virtual void draw(QOpenGLShaderProgram &sp, QOpenGLFunctions *functions);
     virtual void scale(qreal multiplicator);
     void init(const QVector<VertexData> &vertData, const QVector<GLuint> &indexes, const QImage &textureImage);
+    void setTexture(QString path);
     virtual void moveTo(QVector3D position);
     virtual void moveTo(qreal x, qreal y, qreal z);
     virtual void moveAt(QVector3D position);

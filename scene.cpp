@@ -28,9 +28,10 @@ void Scene::initializeGL() {
 
     initShaders();
     initCube(1.0);
-    //objects.append(new Object3D(":/models/saratoga.obj"));
     car.loadObjectFromFile(":/models/saratoga.obj");
-    terrain.loadObjectFromFile(":/models/saratoga.obj"); //terrain.obj
+    terrain.loadObjectFromFile(":/models/road.obj");
+    terrain.setTexture(":/textures/road.jpg");
+    terrain.scale(30);
 
 }
 
@@ -40,7 +41,7 @@ void Scene::resizeGL(int w, int h)
     mainCamera = new Camera(QVector3D(-400, 300.25, 300),
                               QVector3D(0, 0, 0),
                               0.1f,
-                              2500.0f,
+                              10000.0f,
                               45,
                               aspect);
 }
@@ -54,7 +55,7 @@ void Scene::paintGL()
     terrain.SimpleObject3D::draw(sp, context()->functions());
 
     if(cam_idle_state){
-        mainCamera->setPosition(-155 + 700 * qSin(eltimer->elapsed() / 30 % 360 * 3.14159 / 180), 200, -55 + 700 * qCos(eltimer->elapsed() / 30 % 360 * 3.14159 / 180));
+        mainCamera->setPosition(-155 + 700 * qSin(eltimer->elapsed() / 30 % 360 * 3.14159 / 180), 400, -55 + 700 * qCos(eltimer->elapsed() / 30 % 360 * 3.14159 / 180));
     }
     if(!idle_state){
         mainCamera->setPosition(-700,300,500);

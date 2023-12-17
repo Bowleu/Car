@@ -3,10 +3,11 @@
 
 Terrain::Terrain() : SimpleObject3D()
 {
-    vertData.append(VertexData(QVector3D(500, 1000, 600),QVector2D(0.0, 1.0),QVector3D(0.0, 0.0, -1.0)));
-    vertData.append(VertexData(QVector3D(500, -50, 600),QVector2D(0.0, 0.0),QVector3D(0.0, 0.0, -1.0)));
-    vertData.append(VertexData(QVector3D(-500, -50, 600),QVector2D(1.0, 0.0),QVector3D(0.0, 0.0, -1.0)));
+}
 
+Terrain::Terrain(QString pathToObj, QString pathToTexture) {
+    loadObjectFromFile(pathToObj);
+    setTexture(pathToTexture);
 }
 
 

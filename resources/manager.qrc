@@ -10,5 +10,7 @@
         <file>models/mercedes.obj</file>
         <file>textures/Glass.png</file>
         <file>textures/Tire.png</file>
+        <file>models/road.obj</file>
+        <file>textures/road.jpg</file>
     </qresource>
 </RCC>
