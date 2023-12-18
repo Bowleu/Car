@@ -7,6 +7,7 @@
 
 class Object3D : public SimpleObject3D
 {
+protected:
     QMap<QString, SimpleObject3D*> objects;
     qreal rotation;
     QVector3D center;

@@ -51,8 +51,8 @@ void Scene::paintGL()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     sp.bind();
     //cube->draw(sp, context()->functions());
+    terrain.draw(sp, context()->functions());
     car.draw(sp, context()->functions());
-    terrain.SimpleObject3D::draw(sp, context()->functions());
 
     if(cam_idle_state){
         //mainCamera->setPosition(-155 + 700 * qSin(eltimer->elapsed() / 30 % 360 * 3.14159 / 180), 400, -55 + 700 * qCos(eltimer->elapsed() / 30 % 360 * 3.14159 / 180));
@@ -61,9 +61,11 @@ void Scene::paintGL()
     }
     if(!idle_state){
         mainCamera->setPosition(-300,200,500);
-        qDebug() << car.checkRayIntersection(terrain);
+        //qDebug() << car.checkRayIntersection(terrain);
         //qDebug() << distanceToWall;
-        car.setSpeed(3);
+        if (!car.checkRayIntersection(terrain))
+            car.rotate(0.3);
+        car.setSpeed(9);
     }
     mainCamera->show(sp);
 

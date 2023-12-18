@@ -17,8 +17,8 @@ public:
     Car();
     Car(QString pathToFile);
     ~Car();
-    float checkRayIntersection(Terrain terrain);
-    float rayTriangleIntersect(QVector3D v0, QVector3D v1, QVector3D v2);
+    bool checkRayIntersection(Terrain &terrain);
+    bool rayTriangleIntersect(QVector3D v0, QVector3D v1, QVector3D v2);
     //void setRotation(float angle);
     void setSpeed(float speed);
     void setWidth(float roadWidth);
