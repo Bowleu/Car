@@ -12,7 +12,7 @@ float Car::rayTriangleIntersect(QVector3D v0, QVector3D v1, QVector3D v2)
 
     // orig и dir задают начало и направление луча. v0, v1, v2 - вершины треугольника.
     // Функция возвращает расстояние от начала луча до точки пересечения или 0.
-    QVector3D orig = QVector3D(Object3D::getPosition().x()+cos(Object3D::getRotation()*3.14159/180),0,Object3D::getPosition().z()+sin(Object3D::getRotation()*3.14159/180));
+    QVector3D orig = QVector3D(Object3D::getPosition().x()),0,Object3D::getPosition().z());
     QVector3D dir = QVector3D(0,-1,0);
     dir.normalize();
     //qDebug() << dir;
