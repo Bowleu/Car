@@ -21,6 +21,7 @@ public:
     float rayTriangleIntersect(QVector3D v0, QVector3D v1, QVector3D v2);
     //void setRotation(float angle);
     void setSpeed(float speed);
+    void setWidth(float roadWidth);
 };
 
 #endif // CAR_H

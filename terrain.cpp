@@ -14,8 +14,8 @@ Terrain::Terrain(QString pathToObj, QString pathToTexture) {
 int Terrain::getSize(){
     return size;
 }
-QVector<VertexData> Terrain::getVertData(){
-    return vertData;
+QVector<QVector3D> Terrain::getVertCoords(){
+    return vertCoords;
 }
 
 void Terrain::loadObjectFromFile(QString pathToFile)
@@ -64,15 +64,37 @@ void Terrain::loadObjectFromFile(QString pathToFile)
                     QStringList vertInfo = elements[j].split("/");
                     vertexes.append(VertexData(coords[vertInfo[0].toLong() - 1], texCoords[vertInfo[1].toLong() - 1], normals[vertInfo[2].toLong() - 1]));
                     indexes.append(indexes.size());
+                    vertCoords.append(QVector3D(qRound(coords[vertInfo[0].toLong() - 1].x()*1000.0f)/1000.0f,qRound(coords[vertInfo[0].toLong() - 1].y()*1000.0f)/1000.0f,qRound(coords[vertInfo[0].toLong() - 1].z()*1000.0f)/1000.0f));
                 }
             }
         }
     }
     center = QVector3D(0, 0, 0);
     objFile.close();
-    init(vertexes, indexes, QImage(":/textures/tex.jpg"));
-}
 
+    size = vertCoords.size();
+    for(int i = 0; i < size; i++) qDebug() << vertCoords[i];
+    init(vertexes, indexes, QImage(":/textures/tex.jpg"));
+    float maxXZ = 0;
+        for(int i = 0; i < size; i++){
+        if(vertCoords[i].x()>r1){
+            r1 = qRound(vertCoords[i].x()*1000.0f)/1000.0f;
+            maxXZ = qRound(vertCoords[i].z()*1000.0f)/1000.0f;
+
+        }
+    }
+    for(int i = 0; i < size; i++){
+        if(vertCoords[i].z()==maxXZ){
+            if(r2< vertCoords[i].x() && vertCoords[i].x() < r1) r2 = vertCoords[i].x();
+        }
+    }
+    roadWidth = r1-r2;
+    //for(int i = 0; i < size; i++) qDebug() << vertCoords[i];
+
+}
+float Terrain::getRoadWidth(){
+    return roadWidth;
+}
 Terrain::~Terrain()
 {
 

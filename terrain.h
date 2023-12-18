@@ -6,15 +6,19 @@
 
 class Terrain : public SimpleObject3D
 {
-    int size = 3;
-    QVector <VertexData> vertData;
+    int size;
+    float r1;
+    float r2;
+    float roadWidth;
+    QVector <QVector3D> vertCoords;
 public:
 
     Terrain();
     //void draw(QOpenGLShaderProgram &sp, QOpenGLFunctions *functions);
     int getSize();
-    QVector<VertexData> getVertData();
+    QVector<QVector3D> getVertCoords();
     void loadObjectFromFile(QString path);
+    float getRoadWidth();
     ~Terrain();
     Terrain(QString pathToObj, QString pathToTexture);
 };

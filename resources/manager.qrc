@@ -12,5 +12,7 @@
         <file>textures/Tire.png</file>
         <file>models/road.obj</file>
         <file>textures/road.jpg</file>
+        <file>models/newroad.obj</file>
+        <file>models/newroad1.obj</file>
     </qresource>
 </RCC>

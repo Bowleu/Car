@@ -29,10 +29,10 @@ void Scene::initializeGL() {
     initShaders();
     initCube(1.0);
     car.loadObjectFromFile(":/models/saratoga.obj");
-    terrain.loadObjectFromFile(":/models/road.obj");
+    terrain.loadObjectFromFile(":/models/newroad1.obj");
     terrain.setTexture(":/textures/road.jpg");
-    terrain.scale(30);
 
+    car.setWidth(terrain.getRoadWidth());
 }
 
 void Scene::resizeGL(int w, int h)
@@ -50,30 +50,25 @@ void Scene::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     sp.bind();
-    cube->draw(sp, context()->functions());
+    //cube->draw(sp, context()->functions());
     car.draw(sp, context()->functions());
     terrain.SimpleObject3D::draw(sp, context()->functions());
 
     if(cam_idle_state){
-        mainCamera->setPosition(-155 + 700 * qSin(eltimer->elapsed() / 30 % 360 * 3.14159 / 180), 400, -55 + 700 * qCos(eltimer->elapsed() / 30 % 360 * 3.14159 / 180));
+        //mainCamera->setPosition(-155 + 700 * qSin(eltimer->elapsed() / 30 % 360 * 3.14159 / 180), 400, -55 + 700 * qCos(eltimer->elapsed() / 30 % 360 * 3.14159 / 180));
+        mainCamera->setPosition(-300,200,500);
+        car.moveTo(-200,0,0);
     }
     if(!idle_state){
-        mainCamera->setPosition(-700,300,500);
-        float distanceToWall = car.checkRayIntersection(terrain);
-        if(distanceToWall < 400 && distanceToWall !=0){
-            car.rotate(2);
-
-        } else{
-
-        }
-        car.setSpeed(5);
-
+        mainCamera->setPosition(-300,200,500);
+        qDebug() << car.checkRayIntersection(terrain);
+        //qDebug() << distanceToWall;
+        car.setSpeed(3);
     }
-
     mainCamera->show(sp);
 
 
-    qDebug() << car.getPosition();
+    //qDebug() << car.getPosition();
 
     /*for (int i = 0; i < objects.size(); i++) {
         objects[i]->rotate(1);
@@ -82,7 +77,7 @@ void Scene::paintGL()
         objects[i]->draw(sp, context()->fun(ctions());
     }*/
 
-    initCube(300);
+    //initCube(300);
 
     //qDebug() << cube->modelMatrix;
     //qDebug() << qCos(1) << cos(1*3.14159/180);
