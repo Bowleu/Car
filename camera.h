@@ -3,6 +3,7 @@
 #include <QVector3D>
 #include <QMatrix4x4>
 #include <QOpenGLShaderProgram>
+#include "object3d.h"
 
 class Camera
 {
@@ -25,10 +26,12 @@ public:
 
     void setPosition(QVector3D position);
     void setPosition(float x, float y, float z);
+    void setPosition(Object3D &object, float x, float y, float z);
 
     void setViewOn(QVector3D viewOn);
     void setViewOn(float x, float y, float z);
     void setViewOn(float horAngle, float verAngle);
+    void setViewOn(Object3D &object);
 
     void show(QOpenGLShaderProgram &sp);
 };

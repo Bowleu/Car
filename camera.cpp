@@ -1,7 +1,5 @@
 #include "camera.h"
 #include <QtMath>
-#include <QOpenGLWidget>
-#include <QtMath>
 
 void Camera::calcMVP()
 {
@@ -64,6 +62,12 @@ void Camera::setPosition(float x, float y, float z)
     calcMVP();
 }
 
+void Camera::setPosition(Object3D &object, float x, float y, float z)
+{
+    position = object.getPosition() + QVector3D(x, y, z);
+    calcMVP();
+}
+
 void Camera::setViewOn(QVector3D viewOn)
 {
     this->viewOn= viewOn;
@@ -79,6 +83,11 @@ void Camera::setViewOn(float x, float y, float z)
 void Camera::setViewOn(float horAngle, float vertAngle)
 {
     viewOn = {position.x() + (float) qSin(horAngle) * (float) qCos(vertAngle), position.x() + (float) qSin(vertAngle), position.z() + (float) qCos(horAngle) * (float) qCos(vertAngle)};
+    calcMVP();
+}
+
+void Camera::setViewOn(Object3D &object) {
+    viewOn = object.getPosition();
     calcMVP();
 }
 

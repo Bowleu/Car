@@ -10,10 +10,6 @@ Terrain::Terrain(QString pathToObj, QString pathToTexture) {
     setTexture(pathToTexture);
 }
 
-
-int Terrain::getSize(){
-    return size;
-}
 QVector<QVector3D> Terrain::getVertCoords(){
     return vertCoords;
 }
@@ -60,6 +56,7 @@ void Terrain::loadObjectFromFile(QString pathToFile)
                 QStringList vertInfo = elements[1].split("/");
                 vertexes.append(VertexData(coords[vertInfo[0].toLong() - 1], texCoords[vertInfo[1].toLong() - 1], normals[vertInfo[2].toLong() - 1]));
                 indexes.append(indexes.size());
+                vertCoords.append(coords[vertInfo[0].toLong() - 1]);
                 for (int j = i + 1; j <= i + 2; j++) {
                     QStringList vertInfo = elements[j].split("/");
                     vertexes.append(VertexData(coords[vertInfo[0].toLong() - 1], texCoords[vertInfo[1].toLong() - 1], normals[vertInfo[2].toLong() - 1]));
@@ -72,18 +69,17 @@ void Terrain::loadObjectFromFile(QString pathToFile)
     center = QVector3D(0, 0, 0);
     objFile.close();
 
-    size = vertCoords.size();
     //for(int i = 0; i < size; i++) qDebug() << vertCoords[i];
     init(vertexes, indexes, QImage(":/textures/tex.jpg"));
     float maxXZ = 0;
-        for(int i = 0; i < size; i++){
+        for(int i = 0; i < vertCoords.size(); i++){
         if(vertCoords[i].x() > r1){
             r1 = vertCoords[i].x();
             maxXZ = vertCoords[i].z();
 
         }
     }
-    for(int i = 0; i < size; i++){
+    for(int i = 0; i < vertCoords.size(); i++){
         if(qRound(vertCoords[i].z()) == qRound(maxXZ)){
             if(vertCoords[i].x() < r1 and vertCoords[i].x() > 0)
                 r2 = vertCoords[i].x();
@@ -95,6 +91,14 @@ void Terrain::loadObjectFromFile(QString pathToFile)
 }
 float Terrain::getRoadWidth(){
     return roadWidth;
+}
+
+void Terrain::scale(qreal multiplicator)
+{
+    modelMatrix.scale(multiplicator);
+    for (int i = 0; i < vertCoords.size(); i++) {
+        vertCoords[i] = vertCoords[i] * multiplicator;
+    }
 }
 Terrain::~Terrain()
 {

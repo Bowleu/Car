@@ -35,7 +35,7 @@ void SimpleObject3D::draw(QOpenGLShaderProgram &sp, QOpenGLFunctions *functions)
 
     offset += sizeof(QVector2D);
 
-    /*int norLoc = sp.attributeLocation("aNormal");
+    /*int norLoc = sp.attributeLocation("aNormal");                       // Не делал освещение, нормали соответсвенно не нужны
     sp.enableAttributeArray(norLoc);
     sp.setAttributeBuffer(norLoc, GL_FLOAT, offset, 3, sizeof(VertexData));
     */
@@ -55,6 +55,7 @@ void SimpleObject3D::draw(QOpenGLShaderProgram &sp, QOpenGLFunctions *functions)
 void SimpleObject3D::scale(qreal multiplicator)
 {
     modelMatrix.scale(multiplicator);
+
 }
 
 void SimpleObject3D::init(const QVector<VertexData> &vertData, const QVector<GLuint> &indexes, const QImage &textureImage) {
@@ -101,28 +102,30 @@ void SimpleObject3D::setTexture(QString path)
 
 void SimpleObject3D::moveTo(QVector3D position)
 {
-    modelMatrix.translate(position - center);
+    modelMatrix.setColumn(3, QVector4D(position,  modelMatrix.column(3).w()));
     center = QVector3D(modelMatrix.column(3).x(), modelMatrix.column(3).y(), modelMatrix.column(3).z());
 }
 
 void SimpleObject3D::moveTo(qreal x, qreal y, qreal z)
 {
     QVector3D position(x, y, z);
-    modelMatrix.translate(position - center);
+    modelMatrix.setColumn(3, QVector4D(position,  modelMatrix.column(3).w()));
     center = QVector3D(modelMatrix.column(3).x(), modelMatrix.column(3).y(), modelMatrix.column(3).z());
 }
 
 void SimpleObject3D::moveAt(QVector3D position)
 {
-    modelMatrix.translate(position);
+    QVector4D position4D = modelMatrix.column(3) + QVector4D(position, 0);
+    modelMatrix.setColumn(3, position4D);
     center = QVector3D(modelMatrix.column(3).x(), modelMatrix.column(3).y(), modelMatrix.column(3).z());
 }
 
 void SimpleObject3D::moveAt(qreal x, qreal y, qreal z)
 {
     QVector3D position(x, y, z);
-    modelMatrix.translate(position);
-    center = QVector3D(modelMatrix.column(3).x(), modelMatrix.column(3).y(), modelMatrix.column(3).z());
+    QVector4D position4D = modelMatrix.column(3) + QVector4D(position, 0);
+    modelMatrix.setColumn(3, position4D);
+    center = QVector3D(modelMatrix.column(3).x(), modelMatrix.column(3).y(), modelMatrix.column(3).z());;
 }
 
 void SimpleObject3D::rotate(qreal deg)

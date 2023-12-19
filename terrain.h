@@ -6,7 +6,6 @@
 
 class Terrain : public SimpleObject3D
 {
-    int size;
     float r1;
     float r2;
     float roadWidth;
@@ -19,6 +18,7 @@ public:
     QVector<QVector3D> getVertCoords();
     void loadObjectFromFile(QString path);
     float getRoadWidth();
+    void scale(qreal multiplicator);
     ~Terrain();
     Terrain(QString pathToObj, QString pathToTexture);
 };

@@ -19,8 +19,7 @@ public:
     ~Car();
     bool checkRayIntersection(Terrain &terrain);
     bool rayTriangleIntersect(QVector3D v0, QVector3D v1, QVector3D v2);
-    //void setRotation(float angle);
-    void setSpeed(float speed);
+    void moveForward(float speed);
     void setWidth(float roadWidth);
 };
 
