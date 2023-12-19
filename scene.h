@@ -7,7 +7,7 @@
 #include <QOpenGLTexture>
 #include <QOpenGLShaderProgram>
 #include <QDebug>
-#include <QElapsedTimer>
+#include <QTimer>
 #include <QVector3D>
 #include <QFile>
 #include <QOpenGLContext>
@@ -20,6 +20,13 @@
 class Scene : public QOpenGLWidget
 {
     Q_OBJECT
+    Camera *mainCamera;
+    QOpenGLShaderProgram sp;
+    QTimer *rayTimer;
+    QVector <Object3D *> objects;
+    SimpleObject3D *cube;
+    Car car;
+    Terrain terrain;
 public:
     bool cam_idle_state = 1;
     bool idle_state = 1;
@@ -34,15 +41,8 @@ protected:
 
     void initShaders();
     void initCube(float width);
-    void initWall(float width);
-private:
-    Camera *mainCamera;
-    QOpenGLShaderProgram sp;
-    QElapsedTimer *eltimer;
-    QVector <Object3D *> objects;
-    SimpleObject3D *cube;
-    Car car;
-    Terrain terrain;
+private slots:
+    void throwRay();
 };
 
 #endif // SCENE_H

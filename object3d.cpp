@@ -105,11 +105,10 @@ void Object3D::moveTo(QVector3D position)
 
 void Object3D::moveTo(qreal x, qreal y, qreal z)
 {
-    QVector3D position(x, y, z);
     for (auto pair : objects.toStdMap()) {
-        pair.second->moveTo(position);
+        pair.second->moveTo(x, y, z);
     }
-    center = position;
+    center = QVector3D(x, y, z);
 }
 
 void Object3D::moveAt(QVector3D position)
@@ -117,10 +116,7 @@ void Object3D::moveAt(QVector3D position)
     for (auto pair : objects.toStdMap()) {
         pair.second->moveAt(position);
     }
-    QMatrix4x4 rotate;
-    rotate.setToIdentity();
-    rotate.rotate(rotation, 0, 1, 0);
-    center += position * rotate;
+    center += position;
 }
 
 void Object3D::moveAt(qreal x, qreal y, qreal z)
@@ -129,10 +125,7 @@ void Object3D::moveAt(qreal x, qreal y, qreal z)
     for (auto pair : objects.toStdMap()) {
         pair.second->moveAt(position);
     }
-    QMatrix4x4 rotate;
-    rotate.setToIdentity();
-    rotate.rotate(rotation, 0, 1, 0);
-    center += position * rotate;
+    center += position;
 }
 
 void Object3D::draw(QOpenGLShaderProgram &sp, QOpenGLFunctions *functions)
