@@ -16,7 +16,7 @@ bool Car::rayTriangleIntersect(QVector3D v0, QVector3D v1, QVector3D v2) // Ал
     // Функция возвращает расстояние от начала луча до точки пересечения или 0.
 
     QVector3D orig = QVector3D(getPosition().x(), getPosition().y() + 60, getPosition().z());
-    QVector3D dir(qSin(rotation * 3.14159 / 180), -0.25, qCos(rotation * 3.14159 / 180));
+    QVector3D dir(qSin(rotation * 3.14159 / 180), -0.28, qCos(rotation * 3.14159 / 180));
 
     dir.normalize();
     QVector3D e1 = v1 - v0;

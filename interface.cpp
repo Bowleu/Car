@@ -7,11 +7,7 @@ Interface::Interface(QWidget *parent)
     , ui(new Ui::Interface)
 {
     ui->setupUi(this);
-    timer = new QTimer;
-
-    connect(timer, &QTimer::timeout, this, &Interface::updateGL);
-
-    timer->start(10);
+    ui->mainScene->update();
 }
 
 Interface::~Interface()
@@ -21,19 +17,45 @@ Interface::~Interface()
 
 void Interface::updateGL()
 {
-    ui->mainScene->update();
+
 }
 
 
-void Interface::on_pushButton_clicked()
+void Interface::on_startButton_clicked()
 {
     ui->mainScene->cam_idle_state = 0;
     if(ui->mainScene->idle_state){
         ui->mainScene->idle_state = 0;
-        ui->pushButton->setText("- - BREAK - -");
+        ui->startButton->setText("- - BREAK - -");
     }
     else{
         ui->mainScene->idle_state = 1;
-        ui->pushButton->setText("- - START - -");
+        ui->startButton->setText("- - START - -");
+    }
+}
+
+void Interface::on_cam1Button_clicked()
+{
+    ui->mainScene->activeCam = 1;
+}
+
+void Interface::on_cam2Button_clicked()
+{
+    ui->mainScene->activeCam = 2;
+}
+
+void Interface::on_cam3Button_clicked()
+{
+    ui->mainScene->activeCam = 3;
+}
+
+void Interface::on_speedupButton_clicked(){
+    if(ui->mainScene->speedup){
+        ui->mainScene->speedup = 0;
+        ui->speedupButton->setText("x10");
+    }
+    else{
+        ui->mainScene->speedup = 1;
+        ui->speedupButton->setText("x1");
     }
 }

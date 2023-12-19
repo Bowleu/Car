@@ -19,11 +19,14 @@ public:
 
 private:
     Ui::Interface *ui;
-    QTimer *timer;
-    //QPushButton *pushButton;
+
 
 private slots:
     void updateGL();
-    void on_pushButton_clicked();
+    void on_speedupButton_clicked();
+    void on_cam2Button_clicked();
+    void on_cam1Button_clicked();
+    void on_cam3Button_clicked();
+    void on_startButton_clicked();
 };
 #endif // INTERFACE_H

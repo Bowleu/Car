@@ -36,13 +36,13 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="startButton">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>300</y>
+      <x>20</x>
+      <y>310</y>
       <width>301</width>
-      <height>71</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
@@ -65,18 +65,190 @@
   padding: 15px;
   position: relative;
   font-weight: 800;
-  background: #666666;
+  background: #494960;
  color: #ffd801;
 }
 
 QPushButton:hover {
   color: #fcdd2d;
-  background: #777777;
+  background: #6b6b8d;
 }
 </string>
     </property>
     <property name="text">
      <string>- - START - -</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="cam1Button">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>310</y>
+      <width>141</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Consolas</family>
+      <pointsize>-1</pointsize>
+      <weight>99</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+  text-align: center;
+  border-top: 3px solid #ffd801;
+  border-bottom: 3px solid #ffd801;
+  color: #ffd801;
+  font-family: Consolas ,monospace;
+  font-size: 36px;
+  line-height: 1.5rem;
+  padding: 15px;
+  position: relative;
+  font-weight: 800;
+  background: #494960;
+ color: #ffd801;
+}
+
+QPushButton:hover {
+  color: #fcdd2d;
+  background: #6b6b8d;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>CAM 1</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="cam2Button">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>310</y>
+      <width>141</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Consolas</family>
+      <pointsize>-1</pointsize>
+      <weight>99</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+  text-align: center;
+  border-top: 3px solid #ffd801;
+  border-bottom: 3px solid #ffd801;
+  color: #ffd801;
+  font-family: Consolas ,monospace;
+  font-size: 36px;
+  line-height: 1.5rem;
+  padding: 15px;
+  position: relative;
+  font-weight: 800;
+  background: #494960;
+ color: #ffd801;
+}
+
+QPushButton:hover {
+  color: #fcdd2d;
+  background: #6b6b8d;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>CAM 2</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="cam3Button">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>310</y>
+      <width>141</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Consolas</family>
+      <pointsize>-1</pointsize>
+      <weight>99</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+  text-align: center;
+  border-top: 3px solid #ffd801;
+  border-bottom: 3px solid #ffd801;
+  color: #ffd801;
+  font-family: Consolas ,monospace;
+  font-size: 36px;
+  line-height: 1.5rem;
+  padding: 15px;
+  position: relative;
+  font-weight: 800;
+  background: #494960;
+ color: #ffd801;
+}
+
+QPushButton:hover {
+  color: #fcdd2d;
+  background: #6b6b8d;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>CAM 3</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="speedupButton">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>310</y>
+      <width>101</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Consolas</family>
+      <pointsize>-1</pointsize>
+      <weight>99</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+  text-align: center;
+  border-top: 3px solid #ffd801;
+  border-bottom: 3px solid #ffd801;
+  color: #ffd801;
+  font-family: Consolas ,monospace;
+  font-size: 36px;
+  line-height: 1.5rem;
+  padding: 15px;
+  position: relative;
+  font-weight: 800;
+  background: #494960;
+ color: #ffd801;
+}
+
+QPushButton:hover {
+  color: #fcdd2d;
+  background:#6b6b8d;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>x10</string>
     </property>
    </widget>
   </widget>

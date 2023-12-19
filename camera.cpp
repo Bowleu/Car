@@ -90,7 +90,10 @@ void Camera::setViewOn(Object3D &object) {
     viewOn = object.getPosition();
     calcMVP();
 }
-
+void Camera::setFOV(float f) {
+    fov = f;
+    calcMVP();
+}
 void Camera::show(QOpenGLShaderProgram &sp)
 {
     sp.setUniformValue("uProjectionMatrix", projection);

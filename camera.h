@@ -7,7 +7,7 @@
 
 class Camera
 {
-    int fov;
+    float fov;
     float aspect;
     float nearCut, farCut;
     QVector3D position;
@@ -33,6 +33,7 @@ public:
     void setViewOn(float horAngle, float verAngle);
     void setViewOn(Object3D &object);
 
+    void setFOV(float f);
     void show(QOpenGLShaderProgram &sp);
 };
 
