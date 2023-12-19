@@ -30,7 +30,6 @@ void Scene::initializeGL() {
     glEnable(GL_TEXTURE_3D);
 
     initShaders();
-    //initCube(1.0);
     car.loadObjectFromFile(":/models/saratoga.obj");
     terrain.loadObjectFromFile(":/models/newroad1.obj");
     terrain.setTexture(":/textures/road.jpg");
@@ -99,58 +98,7 @@ void Scene::initShaders()
         qDebug() << "Link err";
 }
 
-/*void Scene::initCube(float width)
-{
-    float halfWidth = width / 2.0f;
-    QVector <VertexData> vertexes;
 
-    vertexes.append(VertexData(QVector3D(-halfWidth, halfWidth, halfWidth), QVector2D(0.0, 1.0), QVector3D(0.0, 0.0, 1.0)));
-    vertexes.append(VertexData(QVector3D(-halfWidth, -halfWidth, halfWidth), QVector2D(0.0, 0.0), QVector3D(0.0, 0.0, 1.0)));
-    vertexes.append(VertexData(QVector3D(halfWidth, halfWidth, halfWidth), QVector2D(1.0, 1.0), QVector3D(0.0, 0.0, 1.0)));
-    vertexes.append(VertexData(QVector3D(halfWidth, -halfWidth, halfWidth), QVector2D(1.0, 0.0), QVector3D(0.0, 0.0, 1.0)));
-
-    vertexes.append(VertexData(QVector3D(halfWidth, halfWidth, halfWidth), QVector2D(0.0, 1.0), QVector3D(1.0, 0.0, 0.0)));
-    vertexes.append(VertexData(QVector3D(halfWidth, -halfWidth, halfWidth), QVector2D(0.0, 0.0), QVector3D(1.0, 0.0, 0.0)));
-    vertexes.append(VertexData(QVector3D(halfWidth, halfWidth, -halfWidth), QVector2D(1.0, 1.0), QVector3D(1.0, 0.0, 0.0)));
-    vertexes.append(VertexData(QVector3D(halfWidth, -halfWidth, -halfWidth), QVector2D(1.0, 0.0), QVector3D(1.0, 0.0, 0.0)));
-
-    vertexes.append(VertexData(QVector3D(halfWidth, halfWidth, halfWidth), QVector2D(0.0, 1.0), QVector3D(0.0, 1.0, 0.0)));
-    vertexes.append(VertexData(QVector3D(halfWidth, halfWidth, -halfWidth), QVector2D(0.0, 0.0), QVector3D(0.0, 1.0, 0.0)));
-    vertexes.append(VertexData(QVector3D(-halfWidth, halfWidth, halfWidth), QVector2D(1.0, 1.0), QVector3D(0.0, 1.0, 0.0)));
-    vertexes.append(VertexData(QVector3D(-halfWidth, halfWidth, -halfWidth), QVector2D(1.0, 0.0), QVector3D(0.0, 1.0, 0.0)));
-
-    vertexes.append(VertexData(QVector3D(-halfWidth, halfWidth, -halfWidth), QVector2D(0.0, 1.0), QVector3D(-1.0, 0.0, 0.0)));
-    vertexes.append(VertexData(QVector3D(-halfWidth, -halfWidth, -halfWidth), QVector2D(0.0, 0.0), QVector3D(-1.0, 0.0, 0.0)));
-    vertexes.append(VertexData(QVector3D(-halfWidth, halfWidth, halfWidth), QVector2D(1.0, 1.0), QVector3D(-1.0, 0.0, 0.0)));
-    vertexes.append(VertexData(QVector3D(-halfWidth, -halfWidth, halfWidth), QVector2D(1.0, 0.0), QVector3D(-1.0, 0.0, 0.0)));
-
-    vertexes.append(VertexData(QVector3D(-halfWidth, -halfWidth, halfWidth), QVector2D(0.0, 1.00), QVector3D(0.0, -1.0, 0.0)));
-    vertexes.append(VertexData(QVector3D(-halfWidth, -halfWidth, -halfWidth), QVector2D(0.0, 0.0), QVector3D(0.0, -1.0, 0.0)));
-    vertexes.append(VertexData(QVector3D(halfWidth, -halfWidth, halfWidth), QVector2D(1.0, 1.0), QVector3D(0.0, -1.0, 0.0)));
-    vertexes.append(VertexData(QVector3D(halfWidth, -halfWidth, -halfWidth), QVector2D(1.0, 0.0), QVector3D(0.0, -1.0, 0.0)));
-
-    vertexes.append(VertexData(QVector3D(halfWidth, halfWidth+100, halfWidth*3), QVector2D(0.0, 1.0), QVector3D(0.0, 0.0, -1.0)));
-    vertexes.append(VertexData(QVector3D(halfWidth, -halfWidth+100, halfWidth*3), QVector2D(0.0, 0.0), QVector3D(0.0, 0.0, -1.0)));
-    vertexes.append(VertexData(QVector3D(-halfWidth, halfWidth+100, halfWidth*3), QVector2D(1.0, 1.0), QVector3D(0.0, 0.0, -1.0)));
-    vertexes.append(VertexData(QVector3D(-halfWidth, -halfWidth+100, halfWidth*3), QVector2D(1.0, 0.0), QVector3D(0.0, 0.0, -1.0)));
-    vertexes.append(VertexData(QVector3D(500, 1000, 600), QVector2D(0.0, 1.0), QVector3D(0.0, 0.0, -1.0)));
-    vertexes.append(VertexData(QVector3D(500, -50, 600), QVector2D(0.0, 0.0), QVector3D(0.0, 0.0, -1.0)));
-    vertexes.append(VertexData(QVector3D(-500, -50, 600), QVector2D(1.0, 0.0), QVector3D(0.0, 0.0, -1.0)));
-    vertexes.append(VertexData(QVector3D(-500, 1000, 600), QVector2D(1.0, 1.0), QVector3D(0.0, 0.0, -1.0)));
-
-    QVector <GLuint> indexes;
-    for (int i = 0; i < 3; i += 3) {
-        indexes.append(i + 0);
-        indexes.append(i + 1);
-        indexes.append(i + 2);
-        indexes.append(i + 2);
-        indexes.append(i + 1);
-        indexes.append(i + 3);
-    }
-    cube = new SimpleObject3D(vertexes, indexes, QImage(":/textures/tex.jpg"));
-    //cube->moveTo(QVector3D(-10.5, 0.0, 10.0));
-}
-*/
 void Scene::updateScene(){
     update();
 }

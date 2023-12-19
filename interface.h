@@ -20,9 +20,7 @@ public:
 private:
     Ui::Interface *ui;
 
-
 private slots:
-    void updateGL();
     void on_speedupButton_clicked();
     void on_cam2Button_clicked();
     void on_cam1Button_clicked();

@@ -69,7 +69,6 @@ void Terrain::loadObjectFromFile(QString pathToFile)
     center = QVector3D(0, 0, 0);
     objFile.close();
 
-    //for(int i = 0; i < size; i++) qDebug() << vertCoords[i];
     init(vertexes, indexes, QImage(":/textures/tex.jpg"));
     float maxXZ = 0;
         for(int i = 0; i < vertCoords.size(); i++){
@@ -86,8 +85,7 @@ void Terrain::loadObjectFromFile(QString pathToFile)
         }
     }
     roadWidth = r1-r2;
-    //for(int i = 0; i < size; i++) qDebug() << vertCoords[i];
-    qDebug() << r1 << r2;
+
 
 }
 float Terrain::getRoadWidth(){

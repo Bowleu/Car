@@ -28,13 +28,11 @@ class Scene : public QOpenGLWidget
     QTimer *updateTimer;
     QTimer *rayTimer;
     QVector <Object3D *> objects;
-    SimpleObject3D *cube;
     Car car;
     Terrain terrain;
     const float tickDuration = 10.0f;
     const float rayCheckDuration = 100.0f;
 public:
-    bool cam_idle_state = 1;
     bool idle_state = 1;
     bool speedup = 0;
     int activeCam = 1;

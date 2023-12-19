@@ -7,7 +7,6 @@ Interface::Interface(QWidget *parent)
     , ui(new Ui::Interface)
 {
     ui->setupUi(this);
-    ui->mainScene->update();
 }
 
 Interface::~Interface()
@@ -15,15 +14,8 @@ Interface::~Interface()
     delete ui;
 }
 
-void Interface::updateGL()
-{
-
-}
-
-
 void Interface::on_startButton_clicked()
 {
-    ui->mainScene->cam_idle_state = 0;
     if(ui->mainScene->idle_state){
         ui->mainScene->idle_state = 0;
         ui->startButton->setText("- - BREAK - -");

@@ -35,10 +35,6 @@ void SimpleObject3D::draw(QOpenGLShaderProgram &sp, QOpenGLFunctions *functions)
 
     offset += sizeof(QVector2D);
 
-    /*int norLoc = sp.attributeLocation("aNormal");                       // Не делал освещение, нормали соответсвенно не нужны
-    sp.enableAttributeArray(norLoc);
-    sp.setAttributeBuffer(norLoc, GL_FLOAT, offset, 3, sizeof(VertexData));
-    */
     indexBuffer.bind();
 
     int size = indexBuffer.size();

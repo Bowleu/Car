@@ -57,7 +57,7 @@ bool Car::checkRayIntersection(Terrain &terrain){
     return false;
 }
 void Car::setWidth(float roadWidth){
-    scale(((roadWidth/3)/216));
+    scale(((roadWidth/3)/216)); //216 - ширина модели машины.
 }
 Car::~Car(){
     for (auto pair : objects.toStdMap()) {

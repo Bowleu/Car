@@ -13,7 +13,7 @@ class Terrain : public SimpleObject3D
 public:
 
     Terrain();
-    //void draw(QOpenGLShaderProgram &sp, QOpenGLFunctions *functions);
+
     int getSize();
     QVector<QVector3D> getVertCoords();
     void loadObjectFromFile(QString path);
