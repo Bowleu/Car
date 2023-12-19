@@ -90,6 +90,7 @@ void Terrain::loadObjectFromFile(QString pathToFile)
     }
     roadWidth = r1-r2;
     //for(int i = 0; i < size; i++) qDebug() << vertCoords[i];
+    qDebug() << r1 << r2;
 
 }
 float Terrain::getRoadWidth(){
