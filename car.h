@@ -10,7 +10,7 @@
 
 class Car : public Object3D
 {
-    QMap<QString, SimpleObject3D*> objects;
+    int width;
 public:
     Car();
     Car(QString pathToFile);

@@ -69,7 +69,7 @@ void Terrain::loadObjectFromFile(QString pathToFile)
     center = QVector3D(0, 0, 0);
     objFile.close();
 
-    init(vertexes, indexes, QImage(":/textures/tex.jpg"));
+    init(vertexes, indexes, QImage(":/textures/road.jpg"));
     float maxXZ = 0;
         for(int i = 0; i < vertCoords.size(); i++){
         if(vertCoords[i].x() > r1){

@@ -27,7 +27,6 @@ class Scene : public QOpenGLWidget
     QOpenGLShaderProgram sp;
     QTimer *updateTimer;
     QTimer *rayTimer;
-    QVector <Object3D *> objects;
     Car car;
     Terrain terrain;
     const float tickDuration = 10.0f;
@@ -44,7 +43,6 @@ protected:
     void resizeGL(int w, int h);
     void paintGL();
     void initShaders();
-    void initCube(float width);
 private slots:
     void throwRay();
     void updateScene();

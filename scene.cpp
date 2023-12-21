@@ -17,8 +17,11 @@ Scene::Scene(QWidget *parent) : QOpenGLWidget(parent)
 }
 Scene::~Scene()
 {
-    for (int i = 0; i < objects.size(); i++)
-        delete objects[i];
+    delete cam1;
+    delete cam2;
+    delete cam3;
+    delete rayTimer;
+    delete updateTimer;
 }
 
 void Scene::initializeGL() {
@@ -33,7 +36,7 @@ void Scene::initializeGL() {
     car.loadObjectFromFile(":/models/saratoga.obj");
     terrain.loadObjectFromFile(":/models/newroad1.obj");
     terrain.setTexture(":/textures/road.jpg");
-    car.setWidth(terrain.getRoadWidth());
+    car.setWidth(terrain.getRoadWidth() / 3);
     rayTimer->start(100);                          // Машина дергается, потому что проверка раз в 100мс.
     car.moveTo(-200,0,0);
 }

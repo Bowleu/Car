@@ -1,18 +1,12 @@
 <RCC>
     <qresource prefix="/">
-        <file>textures/cube.jpg</file>
-        <file>textures/tex.jpg</file>
         <file>shaders/fshader.fsh</file>
         <file>shaders/vshader.vsh</file>
         <file>textures/Body.png</file>
         <file>models/saratoga.obj</file>
-        <file>models/r8.obj</file>
-        <file>models/mercedes.obj</file>
         <file>textures/Glass.png</file>
         <file>textures/Tire.png</file>
-        <file>models/road.obj</file>
         <file>textures/road.jpg</file>
-        <file>models/newroad.obj</file>
         <file>models/newroad1.obj</file>
     </qresource>
 </RCC>

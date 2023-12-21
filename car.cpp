@@ -2,7 +2,7 @@
 #include <QtMath>
 Car::Car()
 {
-
+    width = 216;
 }
 void Car::moveForward(float speed)
 {
@@ -56,11 +56,9 @@ bool Car::checkRayIntersection(Terrain &terrain){
     }
     return false;
 }
-void Car::setWidth(float roadWidth){
-    scale(((roadWidth/3)/216)); //216 - ширина модели машины.
+void Car::setWidth(float w){
+    scale(w / width);
+    width = w;
 }
 Car::~Car(){
-    for (auto pair : objects.toStdMap()) {
-        delete pair.second;
-    }
 }
