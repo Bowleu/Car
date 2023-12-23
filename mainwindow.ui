@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>900</width>
+    <height>400</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>900</width>
+    <height>400</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="Scene" name="mainScene">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>900</width>
+      <height>400</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="Interface" name="menu" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>320</y>
+      <width>900</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <widget class="QPushButton" name="startButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>301</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Consolas</family>
+       <pointsize>-1</pointsize>
+       <weight>99</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+  text-align: center;
+  border-top: 3px solid #ffd801;
+  border-bottom: 3px solid #ffd801;
+  color: #ffd801;
+  font-family: Consolas ,monospace;
+  font-size: 36px;
+  line-height: 1.5rem;
+  padding: 15px;
+  position: relative;
+  font-weight: 800;
+  background: #494960;
+ color: #ffd801;
+}
+
+QPushButton:hover {
+  color: #fcdd2d;
+  background: #6b6b8d;
+}
+</string>
+     </property>
+     <property name="text">
+      <string>- - START - -</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="speedupButton">
+     <property name="geometry">
+      <rect>
+       <x>770</x>
+       <y>10</y>
+       <width>101</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Consolas</family>
+       <pointsize>-1</pointsize>
+       <weight>99</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+  text-align: center;
+  border-top: 3px solid #ffd801;
+  border-bottom: 3px solid #ffd801;
+  color: #ffd801;
+  font-family: Consolas ,monospace;
+  font-size: 36px;
+  line-height: 1.5rem;
+  padding: 15px;
+  position: relative;
+  font-weight: 800;
+  background: #494960;
+ color: #ffd801;
+}
+
+QPushButton:hover {
+  color: #fcdd2d;
+  background:#6b6b8d;
+}
+</string>
+     </property>
+     <property name="text">
+      <string>x10</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="cam3Button">
+     <property name="geometry">
+      <rect>
+       <x>620</x>
+       <y>10</y>
+       <width>141</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Consolas</family>
+       <pointsize>-1</pointsize>
+       <weight>99</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+  text-align: center;
+  border-top: 3px solid #ffd801;
+  border-bottom: 3px solid #ffd801;
+  color: #ffd801;
+  font-family: Consolas ,monospace;
+  font-size: 36px;
+  line-height: 1.5rem;
+  padding: 15px;
+  position: relative;
+  font-weight: 800;
+  background: #494960;
+ color: #ffd801;
+}
+
+QPushButton:hover {
+  color: #fcdd2d;
+  background: #6b6b8d;
+}
+</string>
+     </property>
+     <property name="text">
+      <string>CAM 3</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="cam2Button">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>10</y>
+       <width>141</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Consolas</family>
+       <pointsize>-1</pointsize>
+       <weight>99</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+  text-align: center;
+  border-top: 3px solid #ffd801;
+  border-bottom: 3px solid #ffd801;
+  color: #ffd801;
+  font-family: Consolas ,monospace;
+  font-size: 36px;
+  line-height: 1.5rem;
+  padding: 15px;
+  position: relative;
+  font-weight: 800;
+  background: #494960;
+ color: #ffd801;
+}
+
+QPushButton:hover {
+  color: #fcdd2d;
+  background: #6b6b8d;
+}
+</string>
+     </property>
+     <property name="text">
+      <string>CAM 2</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="cam1Button">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>10</y>
+       <width>141</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Consolas</family>
+       <pointsize>-1</pointsize>
+       <weight>99</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+  text-align: center;
+  border-top: 3px solid #ffd801;
+  border-bottom: 3px solid #ffd801;
+  color: #ffd801;
+  font-family: Consolas ,monospace;
+  font-size: 36px;
+  line-height: 1.5rem;
+  padding: 15px;
+  position: relative;
+  font-weight: 800;
+  background: #494960;
+ color: #ffd801;
+}
+
+QPushButton:hover {
+  color: #fcdd2d;
+  background: #6b6b8d;
+}
+</string>
+     </property>
+     <property name="text">
+      <string>CAM 1</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Scene</class>
+   <extends>QOpenGLWidget</extends>
+   <header>scene.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Interface</class>
+   <extends>QWidget</extends>
+   <header>interface.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>cam1Button</sender>
+   <signal>clicked()</signal>
+   <receiver>menu</receiver>
+   <slot>on_cam1Button_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>390</x>
+     <y>360</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>449</x>
+     <y>359</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cam2Button</sender>
+   <signal>clicked()</signal>
+   <receiver>menu</receiver>
+   <slot>on_cam2Button_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>540</x>
+     <y>360</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>449</x>
+     <y>359</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cam3Button</sender>
+   <signal>clicked()</signal>
+   <receiver>menu</receiver>
+   <slot>on_cam3Button_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>690</x>
+     <y>360</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>449</x>
+     <y>359</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>speedupButton</sender>
+   <signal>clicked()</signal>
+   <receiver>menu</receiver>
+   <slot>on_speedupButton_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>820</x>
+     <y>360</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>449</x>
+     <y>359</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>startButton</sender>
+   <signal>clicked()</signal>
+   <receiver>menu</receiver>
+   <slot>on_startButton_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>160</x>
+     <y>360</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>449</x>
+     <y>359</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

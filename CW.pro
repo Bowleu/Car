@@ -22,6 +22,7 @@ SOURCES += \
     car.cpp \
     main.cpp \
     interface.cpp \
+    mainwindow.cpp \
     object3d.cpp \
     scene.cpp \
     simpleObject3d.cpp \
@@ -31,6 +32,7 @@ HEADERS += \
     camera.h \
     car.h \
     interface.h \
+    mainwindow.h \
     object3d.h \
     scene.h \
     simpleObject3d.h \
@@ -38,7 +40,7 @@ HEADERS += \
     vertexdata.h
 
 FORMS += \
-    interface.ui
+    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

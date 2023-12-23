@@ -1,24 +1,20 @@
 #ifndef INTERFACE_H
 #define INTERFACE_H
 
-#include <QMainWindow>
+#include <QWidget>
 #include <QTimer>
 #include <QPushButton>
+#include "scene.h"
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class Interface; }
-QT_END_NAMESPACE
-
-class Interface : public QMainWindow
+class Interface : public QWidget
 {
     Q_OBJECT
-
+    Scene *mainScene;
+    QList <QPushButton*> buttons;
 public:
     Interface(QWidget *parent = nullptr);
     ~Interface();
-
-private:
-    Ui::Interface *ui;
+    void setScene(Scene *s);
 
 private slots:
     void on_speedupButton_clicked();

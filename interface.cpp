@@ -1,53 +1,56 @@
 #include "interface.h"
-#include "ui_interface.h"
 #include "camera.h"
 
 Interface::Interface(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::Interface)
+    : QWidget(parent)
 {
-    ui->setupUi(this);
 }
 
 Interface::~Interface()
 {
-    delete ui;
+}
+
+void Interface::setScene(Scene* s)
+{
+    mainScene = s;
 }
 
 void Interface::on_startButton_clicked()
 {
-    if(ui->mainScene->idle_state){
-        ui->mainScene->idle_state = 0;
-        ui->startButton->setText("- - BREAK - -");
+    QPushButton* startButton = findChild<QPushButton*>("startButton");
+    if(mainScene->idle_state){
+        mainScene->idle_state = 0;
+        startButton->setText("- - BREAK - -");
     }
     else{
-        ui->mainScene->idle_state = 1;
-        ui->startButton->setText("- - START - -");
+        mainScene->idle_state = 1;
+        startButton->setText("- - START - -");
     }
 }
 
 void Interface::on_cam1Button_clicked()
 {
-    ui->mainScene->activeCam = 1;
+    mainScene->activeCam = 1;
 }
 
 void Interface::on_cam2Button_clicked()
 {
-    ui->mainScene->activeCam = 2;
+    mainScene->activeCam = 2;
 }
 
 void Interface::on_cam3Button_clicked()
 {
-    ui->mainScene->activeCam = 3;
+    mainScene->activeCam = 3;
 }
 
 void Interface::on_speedupButton_clicked(){
-    if(ui->mainScene->speedup){
-        ui->mainScene->speedup = 0;
-        ui->speedupButton->setText("x10");
+    QPushButton* speedupButton = findChild<QPushButton*>("speedupButton");
+    if(mainScene->speedup){
+        mainScene->speedup = 0;
+        speedupButton->setText("x10");
     }
     else{
-        ui->mainScene->speedup = 1;
-        ui->speedupButton->setText("x1");
+        mainScene->speedup = 1;
+        speedupButton->setText("x1");
     }
 }
