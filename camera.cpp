@@ -1,7 +1,7 @@
 #include "camera.h"
 #include <QtMath>
 
-void Camera::calcMVP()
+void Camera::calcVP()
 {
 
     projection.setToIdentity();
@@ -35,7 +35,7 @@ Camera::Camera()
     farCut = 10.0f;
     position = {0, 0, 0};
     viewOn = {0, 0, -1};
-    calcMVP();
+    calcVP();
 }
 
 Camera::Camera(QVector3D position, QVector3D viewOn, float n, float f, int fov, float aspect)
@@ -47,52 +47,52 @@ Camera::Camera(QVector3D position, QVector3D viewOn, float n, float f, int fov, 
     this->fov = fov;
     this->aspect = aspect;
 
-    calcMVP();
+    calcVP();
 }
 
 void Camera::setPosition(QVector3D position)
 {
     this->position = position;
-    calcMVP();
+    calcVP();
 }
 
 void Camera::setPosition(float x, float y, float z)
 {
     position = {x, y, z};
-    calcMVP();
+    calcVP();
 }
 
 void Camera::setPosition(Object3D &object, float x, float y, float z)
 {
     position = object.getPosition() + QVector3D(x, y, z);
-    calcMVP();
+    calcVP();
 }
 
 void Camera::setViewOn(QVector3D viewOn)
 {
     this->viewOn= viewOn;
-    calcMVP();
+    calcVP();
 }
 
 void Camera::setViewOn(float x, float y, float z)
 {
     viewOn = {x, y, z};
-    calcMVP();
+    calcVP();
 }
 
 void Camera::setViewOn(float horAngle, float vertAngle)
 {
     viewOn = {position.x() + (float) qSin(horAngle) * (float) qCos(vertAngle), position.x() + (float) qSin(vertAngle), position.z() + (float) qCos(horAngle) * (float) qCos(vertAngle)};
-    calcMVP();
+    calcVP();
 }
 
 void Camera::setViewOn(Object3D &object) {
     viewOn = object.getPosition();
-    calcMVP();
+    calcVP();
 }
 void Camera::setFOV(float f) {
     fov = f;
-    calcMVP();
+    calcVP();
 }
 void Camera::show(QOpenGLShaderProgram &sp)
 {

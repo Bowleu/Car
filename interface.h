@@ -10,7 +10,6 @@ class Interface : public QWidget
 {
     Q_OBJECT
     Scene *mainScene;
-    QList <QPushButton*> buttons;
 public:
     Interface(QWidget *parent = nullptr);
     ~Interface();
