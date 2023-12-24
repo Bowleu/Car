@@ -15,11 +15,8 @@ class Camera
 
     QMatrix4x4 view;
     QMatrix4x4 projection;
-    QMatrix4x4 model;
 
-    QMatrix4x4 MVP;
-
-    void calcMVP();
+    void calcVP();
 public:
     Camera();
     Camera(QVector3D position, QVector3D viewOn, float near, float far, int fov, float aspect);
