@@ -9,7 +9,7 @@ void Car::moveForward(float speed)
     QVector3D direction(speed * qSin(rotation * 3.14159 / 180), 0, speed * qCos(rotation * 3.14159 / 180));
     moveAt(direction);
 }
-bool Car::rayTriangleIntersect(QVector3D v0, QVector3D v1, QVector3D v2) // Алгоритм Меллера-Трумбора
+int Car::rayTriangleIntersect(QVector3D v0, QVector3D v1, QVector3D v2) // Алгоритм Меллера-Трумбора
 {
 
     // orig и dir задают начало и направление луча. v0, v1, v2 - вершины треугольника.
@@ -27,34 +27,36 @@ bool Car::rayTriangleIntersect(QVector3D v0, QVector3D v1, QVector3D v2) // Ал
 
     // Луч параллелен плоскости
     if (det < 1e-8 && det > -1e-8) {
-        return false;
+        return 0;
     }
     float inv_det = 1 / det;
     QVector3D tvec = orig - v0;
     float u = QVector3D::dotProduct(tvec, pvec) * inv_det;
     if (u < 0 || u > 1){
-        return false;
+        return 0;
     }
 
     QVector3D qvec = QVector3D::crossProduct(tvec, e1);
     float v = QVector3D::dotProduct(dir, qvec) * inv_det;
     if (v < 0 || u + v > 1){
-        return false;
+        return 0;
     }
 
     // Треугольник в протитвоположной стороне от направления луча
     if(QVector3D::dotProduct(e2, qvec) * inv_det < 0) return false;
 
-    return true;
+    return QVector3D::dotProduct(e2, qvec) * inv_det;
 }
-bool Car::checkRayIntersection(Terrain &terrain){
+int Car::checkRayIntersection(Terrain &terrain){
     QVector<QVector3D> vertCoords = terrain.getVertCoords();
+    int distance;
     for(int i = 0; i < vertCoords.size() - 2; i += 3){
-        if (rayTriangleIntersect(vertCoords[i], vertCoords[i+1], vertCoords[i+2])){
-            return true;
+        distance = rayTriangleIntersect(vertCoords[i], vertCoords[i+1], vertCoords[i+2]);
+        if (distance){
+            return distance;
         }
     }
-    return false;
+    return distance;
 }
 void Car::setWidth(float w){
     scale(w / width);

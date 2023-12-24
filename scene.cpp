@@ -107,8 +107,8 @@ void Scene::updateScene(){
 }
 void Scene::throwRay()
 {
-    if (!car.checkRayIntersection(terrain))
-        if (speedup) car.rotate(8);
-        else car.rotate(4);
+    int distance = car.checkRayIntersection(terrain);
+    if (speedup) car.rotate(abs(distance-223)/28);
+    else car.rotate(abs(distance-223)/56);
 }
 
