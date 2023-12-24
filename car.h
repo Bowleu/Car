@@ -11,12 +11,12 @@
 class Car : public Object3D
 {
     int width;
+    int rayTriangleIntersect(QVector3D v0, QVector3D v1, QVector3D v2);
 public:
     Car();
     Car(QString pathToFile);
     ~Car();
     int checkRayIntersection(Terrain &terrain);
-    int rayTriangleIntersect(QVector3D v0, QVector3D v1, QVector3D v2);
     void moveForward(float speed);
     void setWidth(float roadWidth);
 };

@@ -11,10 +11,7 @@ class Terrain : public SimpleObject3D
     float roadWidth;
     QVector <QVector3D> vertCoords;
 public:
-
     Terrain();
-
-    int getSize();
     QVector<QVector3D> getVertCoords();
     void loadObjectFromFile(QString path);
     float getRoadWidth();

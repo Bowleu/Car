@@ -98,6 +98,9 @@ void Terrain::scale(qreal multiplicator)
     for (int i = 0; i < vertCoords.size(); i++) {
         vertCoords[i] = vertCoords[i] * multiplicator;
     }
+    r1 *= multiplicator;
+    r2 *= multiplicator;
+    roadWidth *= multiplicator;
 }
 Terrain::~Terrain()
 {
